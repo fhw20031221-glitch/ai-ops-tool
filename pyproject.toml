@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-db-tool"
+version = "1.0.0"
+description = "AI 数据库安全操作 CLI 工具（MySQL / Kingbase，读写分级确认）"
+requires-python = ">=3.10"
+dependencies = [
+    "pymysql>=1.1",
+    "psycopg2-binary>=2.9.10",
+    "sqlglot>=26.1",
+    "PyYAML>=6.0",
+    "rich>=13.0",
+]
+
+[project.scripts]
+ai-db = "ai_db_tool.cli:main"
+
+[tool.setuptools]
+packages = ["ai_db_tool", "ai_db_tool.adapters", "ai_db_tool.cmds"]

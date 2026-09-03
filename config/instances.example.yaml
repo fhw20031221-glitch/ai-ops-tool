@@ -1,0 +1,53 @@
+# ai-db-tool 实例注册表模板
+#
+# 使用方法: 复制本文件为同目录下的 instances.yaml, 填入真实连接信息。
+# instances.yaml 已被 .gitignore 忽略, 不会被提交。
+#
+# 安全规则 1：只有在该文件中登记的实例才允许连接。
+# 新增数据库实例 = 在 instances: 下加一段, 无需改代码。
+
+# 全局 guard 默认参数（可被单个实例覆盖）
+defaults:
+  max_rows: 200              # query 默认返回行数上限
+  absolute_max_rows: 5000    # --max-rows 允许的最大值（硬上限）
+  statement_timeout_sec: 30  # 单条语句超时（秒）
+  connect_timeout_sec: 8     # 建立连接超时（秒）
+  deny_functions:            # 即使出现在 SELECT 里也一律拦截的函数
+    - load_file
+    - benchmark
+    - sleep
+    - pg_sleep
+    - pg_read_file
+    - pg_read_binary_file
+    - pg_ls_dir
+    - pg_terminate_backend
+    - lo_import
+    - lo_export
+
+instances:
+  # ── MySQL 实例示例 ─────────────────────────────
+  my-mysql:
+    dialect: mysql           # 使用 pymysql 驱动
+    sql_dialect: mysql       # guard 按 MySQL 方言解析 SQL
+    host: your-mysql-host
+    port: 3306
+    user: your_user
+    password: "your_password"
+    database: your_db        # 默认库
+
+  # ── Kingbase V8R6 实例示例（PG wire 协议）──────
+  my-kingbase:
+    dialect: kingbase        # 使用 psycopg2 驱动
+    sql_dialect: mysql       # 若服务器为 MySQL 兼容模式则保持 mysql, 原生模式可改 postgres
+    host: your-kingbase-host
+    port: 54321
+    user: your_user
+    password: "your_password"
+    database: your_db
+    schema: your_schema      # 连接时设为 search_path
+    schema_excludes:         # 列表时排除的系统 schema
+      - information_schema
+      - pg_catalog
+      - sysaudit
+      - sys_hm
+      - sysmac

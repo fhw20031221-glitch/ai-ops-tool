@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+# 真实连接配置（含主机/密码）不入库, 使用 instances.example.yaml 为模板
+config/instances.yaml
+config/instances.local.yaml
+.venv/

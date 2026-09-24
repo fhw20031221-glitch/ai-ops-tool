@@ -1,4 +1,4 @@
-# ai-db-tool 实例注册表模板
+# 数据库实例注册表模板
 #
 # 使用方法: 复制本文件为同目录下的 instances.yaml, 填入真实连接信息。
 # instances.yaml 已被 .gitignore 忽略, 不会被提交。

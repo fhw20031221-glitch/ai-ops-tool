@@ -4,8 +4,8 @@
 """
 import unittest
 
-from ai_db_tool.errors import GuardError
-from ai_db_tool import guard
+from ai_ops_tool.errors import GuardError
+from ai_ops_tool import guard
 
 
 DENY = ["load_file", "benchmark", "sleep", "pg_sleep", "pg_read_file"]

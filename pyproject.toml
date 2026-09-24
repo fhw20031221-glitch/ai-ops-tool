@@ -3,20 +3,22 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ai-db-tool"
-version = "1.0.0"
-description = "AI 数据库安全操作 CLI 工具（MySQL / Kingbase，读写分级确认）"
+name = "ai-ops-tool"
+version = "2.0.0"
+description = "AI 远程运维 CLI 工具（SSH 执行/文件传输+哈希门禁，Linux/Windows 双适配；数据库安全操作为附加功能）"
 requires-python = ">=3.10"
 dependencies = [
+    "paramiko>=3.4",
+    "PyYAML>=6.0",
+    "rich>=13.0",
     "pymysql>=1.1",
     "psycopg2-binary>=2.9.10",
     "sqlglot>=26.1",
-    "PyYAML>=6.0",
-    "rich>=13.0",
 ]
 
 [project.scripts]
-ai-db = "ai_db_tool.cli:main"
+ai-ops = "ai_ops_tool.cli:main"
+ai-db = "ai_ops_tool.legacy_db:main"
 
 [tool.setuptools]
-packages = ["ai_db_tool", "ai_db_tool.adapters", "ai_db_tool.cmds"]
+packages = ["ai_ops_tool", "ai_ops_tool.adapters", "ai_ops_tool.cmds", "ai_ops_tool.ops"]

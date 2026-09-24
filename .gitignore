@@ -7,3 +7,6 @@ dist/
 config/instances.yaml
 config/instances.local.yaml
 .venv/
+
+# 真实主机凭据不入库
+config/hosts.yaml

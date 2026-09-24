@@ -1,0 +1,29 @@
+# AI 远程运维主机注册表（模板）
+# 复制为 config/hosts.yaml 并填入真实凭据；hosts.yaml 已被 .gitignore 排除，不入库。
+#
+# 安全规则：只有在此登记的主机才允许连接。
+# type 决定远端命令模板（哈希/建目录）：linux 或 windows。
+# defaults 段可省略，逐项覆盖：retry / retry-wait / timeout / keepalive / algo。
+
+defaults:
+  retry: 6          # 连接重试次数（链路抖动场景，VPN/边界设备实测 6x10s 起步）
+  retry-wait: 10    # 重试间隔秒
+  timeout: 60       # 远端命令默认超时秒
+  keepalive: 15     # SSH keepalive 秒
+  algo: md5         # put/get 校验算法 md5 | sha256
+
+hosts:
+  demo-linux:
+    type: linux
+    host: 192.0.2.10
+    port: 22
+    user: root
+    password: "change-me"
+    desc: 示例 Linux 主机（删除本条后填入真实主机）
+  demo-windows:
+    type: windows
+    host: 192.0.2.20
+    port: 22
+    user: administrator
+    password: "change-me"
+    desc: 示例 Windows 主机（Win32-OpenSSH，默认 shell 可为 cmd/powershell）

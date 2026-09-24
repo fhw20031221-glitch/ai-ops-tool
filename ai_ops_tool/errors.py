@@ -50,3 +50,10 @@ class GuardError(AidbError):
 class DbError(AidbError):
     exit_code = EXIT_DB
     prefix = "[DB]"
+
+
+class RemoteError(AidbError):
+    """远程主机错误（连接失败、远端命令失败、哈希获取失败等）。"""
+
+    exit_code = 1
+    prefix = "[REMOTE]"

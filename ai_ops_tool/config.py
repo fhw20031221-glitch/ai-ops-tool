@@ -14,7 +14,7 @@ import yaml
 
 from .errors import ConfigError
 
-# 项目根目录（ai_db_tool/ 的上一级）
+# 项目根目录（ai_ops_tool/ 的上一级）
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = PROJECT_ROOT / "config" / "instances.yaml"
 
